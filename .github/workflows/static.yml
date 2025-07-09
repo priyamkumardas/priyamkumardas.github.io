@@ -42,50 +42,42 @@
 #         id: deployment
 #         uses: actions/deploy-pages@v4
 
-name: Deploy React App from Subfolder to GitHub Pages
+name: Build and Deploy Personal React Site
 
 on:
   push:
     branches:
-      - master  # Or your default branch
+      - master
 
 permissions:
   contents: write
 
 jobs:
-  deploy:
+  build:
     runs-on: ubuntu-latest
-
-    defaults:
-      run:
-        working-directory: react  # 👈 set working directory to `react/`
 
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
 
-      - name: Set up Node.js
+      - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
           node-version: '18'
 
       - name: Install dependencies
+        working-directory: ./react
         run: npm install
 
-      - name: Build project
+      - name: Build React app
+        working-directory: ./react
         run: npm run build
-
-      # - name: Deploy using actions-gh-pages
-      #   uses: peaceiris/actions-gh-pages@v3
-      #   with:
-      #     github_token: ${{ secrets.GITHUB_TOKEN }}
-      #     publish_dir: ./react/dist
 
       - name: Copy output to /docs folder
         run: |
-          rm -rf ../docs
-          mkdir ../docs
-          cp -r dist/* ../docs/
+          rm -rf docs
+          mkdir docs
+          cp -r react/dist/* docs/
           
       - name: Commit and push /docs to master
         run: |
@@ -94,3 +86,12 @@ jobs:
           git add docs
           git commit -m "Deploy: update docs" || echo "No changes to commit"
           git push origin master
+
+
+      # - name: Deploy using actions-gh-pages
+      #   uses: peaceiris/actions-gh-pages@v3
+      #   with:
+      #     github_token: ${{ secrets.GITHUB_TOKEN }}
+      #     publish_dir: ./react/dist
+
+      
