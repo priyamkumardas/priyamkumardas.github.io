@@ -1,0 +1,80 @@
+🥇 Top 25 Interview Questions on Operating System (OS) which is frequently asked in the Interviews 🏆:
+
+1. Different Types of OS ?
+2. Benefits of a multiprocessor system ?
+3. What is spooling in OS ?
+4. What do you mean by Belady's Anomaly ?
+5. What is deadlock and what are the necessary conditions for a deadlock ?
+6. Difference between a process and a thread ?
+7. Different sections of the process ?
+8. What is context switching ?
+9. Difference between Kernel and OS ?
+10. Different Types of Kernel and explain each of them ?
+11. What is a time sharing system ?
+12. What do you mean by Semaphore and why is it used ?
+13. What is starvation and aging in OS ?
+14. Difference between multitasking and multiprocessing OS ?
+15. What is Zombie process ?
+16. Explain thrashing ?
+17. Explain the difference between paging and segmentation ?
+18. What is a scheduling algorithm and list all the types of such algorithms ?
+19. What do you mean by FCFS (First Come First Serve) in OS ?
+20. What is a process ? What are the different states of a process ?
+21. What is a thread in OS ?
+22. What is virtual memory ?
+23. What is IPC ? Different types of IPC mechanisms ?
+24. Explain demand paging ?
+25. What is RAID structure in OS ? What are the differwnt levels of RAID configuration ?
+
+Many companies asks questions on basic computer fundamental topics like computer networks , Operating System , Database Management System , SDLC lifecycle models, etc. Please note that the above OS Questions is not an exhaustive list. I'll be covering each topic in the subsequent posts. Stay tuned ! 😄
+
+
+🎊 15 Database Management System (DBMS) Questions that you must not miss practicing before an interview 🧨
+
+1. Explain DBMS and RDBMS with examples ?
+2. What is database ?
+3. Mention the issues with traditional file based systems that make DBMS a better choice ?
+4. Advantages of DBMS and different languages present in DBMS .
+5. Explain ACID properties in DBMS
+6. What is data warehousing ?
+7. Explain different levels of data abstraction in a DBMS
+8. What is meant by an entity relationship model (E-R) model. Explain the terms entity , entity type and entity set in DBMS
+9. Explain different types of relationships amongst tables in a DBMS
+10. Explain the difference between DELETE , TRUNCATE and DROP command in a DBMS
+11. What is a lock . Explain the major difference between a shared lock and an exclusive lock during a transaction in a database.
+12. What is meant by normalization and denormalization.
+13. Explain different types of Normalization forms in a DBMS
+14. Explain different types of key in a DBMS
+15. Explain the difference between a 2-tier and 3-tier architecture in a DBMS
+
+Computer fundamentals in increasingly becoming an important topic in interviews, particularly in the hiring manager rounds. The above list of DBMS questions is not an exhaustive one but definitely covers some of the most important questions that you must not miss at any cost. 🤡
+
+
+
+🤡 Top 25 Questions on Software Engineering that you cannot miss while preparaing for your next big interview 🎊
+
+1. Characteristics of a Software ?
+2. Explain Software Development Lifeycle (SDLC) briefly
+3. What are the different SDLC models available ? Explain each of them ?
+4. What is debugging ?
+🌧😶‍🌫️ What is waterfall model and what are its use cases ? ⛈️🌋
+6. Which is the best SDLC model and why ?
+7. What is software scope ?
+8. Merits of the incremental model ?
+9. What is Software Prototyping and POC ?
+🌀🌀 Drawbacks of the Spiral model ? 🟢🟣
+11. What is baseline in Software Development ?
+12. What is SRS ?
+13. What arw CASE tools ?
+14. What is meant by Verification and Valudation ?
+🔂🪃 What do you mean by Software Re-engineering ? 🪃 🔁
+16. What is feasibility study ?
+17. Define black box and white box testing.
+18. What are software metrics ?
+19. What is the difference betwen Cohesion and Coupling ?
+👨‍💻🖥 What is Data Flow Diagram? 📽🌋
+21. Explain the concept of modularization ?
+22.What is Software Configuration Management ?
+23. What are functional and non-functional requirements ?
+24. What is the differenxmce between Quality Assurance and Quality Control ?
+☀️🌍 What do you mean by concurrency ?🌏🌛
