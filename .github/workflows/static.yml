@@ -83,7 +83,7 @@ jobs:
 
       - name: Clone master branch
         run: |
-          git clone --branch master https://github.com/${{ github.repository }} master-temp
+          git clone --branch master https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }} master-temp
           rm -rf master-temp/*
           cp -r react/dist/* master-temp/
 
