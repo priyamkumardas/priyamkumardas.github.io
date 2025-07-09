@@ -84,7 +84,10 @@ jobs:
       - name: Clone master branch
         run: |
           git clone --branch master https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }} master-temp
-          rm -rf master-temp/*
+          # rm -rf master-temp/*
+          rm -rf master-temp/index.html
+          rm -rf master-temp/vite.svg
+          rm -rf master-temp/assets
           cp -r react/dist/* master-temp/
 
       - name: Push to master branch
