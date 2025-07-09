@@ -85,7 +85,7 @@ jobs:
         run: |
           rm -rf docs
           mkdir docs
-          cp -r react/dist/* docs/
+          cp -r dist/* docs/
           
       - name: Commit and push /docs to main
         run: |
