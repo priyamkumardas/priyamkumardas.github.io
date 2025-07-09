@@ -42,7 +42,7 @@
 #         id: deployment
 #         uses: actions/deploy-pages@v4
 
-name: Build and Deploy Personal React Site
+name: Deploy React App to Personal GitHub Page (Selective Cleanup)
 
 on:
   push:
@@ -53,14 +53,14 @@ permissions:
   contents: write
 
 jobs:
-  build:
+  deploy:
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
 
-      - name: Setup Node.js
+      - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
           node-version: '18'
@@ -73,19 +73,25 @@ jobs:
         working-directory: ./react
         run: npm run build
 
-      - name: Copy output to /docs folder
+      - name: Remove old build files from root
         run: |
-          rm -rf docs
-          mkdir docs
-          cp -r react/dist/* docs/
-          
-      - name: Commit and push /docs to master
+          rm -rf index.html
+          rm -rf vite.svg
+          rm -rf assets
+
+      - name: Copy new build to root
+        run: |
+          cp -r react/dist/* .
+
+      - name: Commit and push updated files
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add docs
-          git commit -m "Deploy: update docs" || echo "No changes to commit"
+          git add -A
+          git commit -m "Deploy: update site files" || echo "No changes to commit"
           git push origin master
+
+
 
 
       # - name: Deploy using actions-gh-pages
