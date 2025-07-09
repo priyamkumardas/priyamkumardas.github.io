@@ -1,63 +1,71 @@
-# # Simple workflow for deploying static content to GitHub Pages
-# name: Deploy static content to Pages
+
+
+# name: Deploy React App to Personal GitHub Page (Selective Cleanup)
 
 # on:
-#   # Runs on pushes targeting the default branch
 #   push:
-#     branches: ["master"]
+#     branches:
+#       - dev
 
-#   # Allows you to run this workflow manually from the Actions tab
-#   workflow_dispatch:
-
-# # Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
 # permissions:
-#   contents: read
-#   pages: write
-#   id-token: write
-
-# # Allow only one concurrent deployment, skipping runs queued between the run in-progress and latest queued.
-# # However, do NOT cancel in-progress runs as we want to allow these production deployments to complete.
-# concurrency:
-#   group: "pages"
-#   cancel-in-progress: false
+#   contents: write
 
 # jobs:
-#   # Single deploy job since we're just deploying
 #   deploy:
-#     environment:
-#       name: github-pages
-#       url: ${{ steps.deployment.outputs.page_url }}
 #     runs-on: ubuntu-latest
-#     steps:
-#       - name: Checkout
-#         uses: actions/checkout@v4
-#       - name: Setup Pages
-#         uses: actions/configure-pages@v4
-#       - name: Upload artifact
-#         uses: actions/upload-pages-artifact@v3
-#         with:
-#           # Upload entire repository
-#           path: "."
-#       - name: Deploy to GitHub Pages
-#         id: deployment
-#         uses: actions/deploy-pages@v4
 
-name: Deploy React App to Personal GitHub Page (Selective Cleanup)
+#     steps:
+#       - name: Checkout repository
+#         uses: actions/checkout@v3
+
+#       - name: Set up Node.js
+#         uses: actions/setup-node@v3
+#         with:
+#           node-version: '18'
+
+#       - name: Install dependencies
+#         working-directory: ./react
+#         run: npm install
+
+#       - name: Build React app
+#         working-directory: ./react
+#         run: npm run build
+
+#       - name: Remove old build files from root
+#         run: |
+#           rm -rf index.html
+#           rm -rf vite.svg
+#           rm -rf assets
+
+#       - name: Copy new build to root
+#         run: |
+#           cp -r react/dist/* .
+
+#       - name: Commit and push updated files
+#         run: |
+#           git config user.name "github-actions[bot]"
+#           git config user.email "github-actions[bot]@users.noreply.github.com"
+#           git add -A
+#           git commit -m "Deploy: update site files" || echo "No changes to commit"
+#           git push origin master
+
+
+name: Build and Push to Master
 
 on:
   push:
     branches:
-      - master
+      - dev
 
 permissions:
   contents: write
 
 jobs:
-  deploy:
+  build:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository
+      - name: Checkout source (dev)
         uses: actions/checkout@v3
 
       - name: Set up Node.js
@@ -73,22 +81,19 @@ jobs:
         working-directory: ./react
         run: npm run build
 
-      - name: Remove old build files from root
+      - name: Clone master branch
         run: |
-          rm -rf index.html
-          rm -rf vite.svg
-          rm -rf assets
+          git clone --branch master https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }} master-temp
+          rm -rf master-temp/*
+          cp -r react/dist/* master-temp/
 
-      - name: Copy new build to root
+      - name: Push to master branch
         run: |
-          cp -r react/dist/* .
-
-      - name: Commit and push updated files
-        run: |
+          cd master-temp
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add -A
-          git commit -m "Deploy: update site files" || echo "No changes to commit"
+          git add .
+          git commit -m "Deploy: build from dev to master" || echo "No changes to commit"
           git push origin master
 
 
