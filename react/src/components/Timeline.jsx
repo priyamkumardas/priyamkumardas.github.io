@@ -65,7 +65,7 @@ const Timeline = () => (
           <div className="timeline-image"><img className="rounded-circle img-fluid" src={about4} alt="..." /></div>
           <div className="timeline-panel">
             <div className="timeline-heading">
-              <h4>May 2022- Present</h4>
+              <h4>May 2024- Present</h4>
               <h4 className="subheading">Simplify3x</h4>
             </div>
             <div className="timeline-body"><p className="text-muted"> Working as SSE with AI and Textract. Using llama3 llm and textract (OCR) for pre proccesing meta datas. </p></div>
